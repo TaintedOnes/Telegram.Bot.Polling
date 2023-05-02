@@ -180,11 +180,12 @@ public class UpdateHandler : IUpdateHandler
 
         async Task SendMessage(Message message1)
         {
+            IConfiguration? config = null;
             var connection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:64646/chathub")
+            .WithUrl(config.GetValue<string>("SignalRHubUrl"))
             .Build();
 
-            await connection.StartAsync();
+            await connection.StartAsync(cancellationToken);
 
             await connection.SendAsync("SendMessage", message1, cancellationToken: cancellationToken);
         }
