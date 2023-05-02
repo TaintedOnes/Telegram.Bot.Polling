@@ -180,7 +180,6 @@ public class UpdateHandler : IUpdateHandler
 
         async Task SendMessage(Message message1)
         {
-            IConfiguration? config = null;
             var connection = new HubConnectionBuilder()
             .WithUrl("http://localhost:8100/chathub")
             .Build();
