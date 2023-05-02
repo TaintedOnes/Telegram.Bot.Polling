@@ -158,9 +158,11 @@ public class UpdateHandler : IUpdateHandler
                 cancellationToken: cancellationToken);
         }
 
-        static async Task<Message> Usage(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
+        async Task<Message> Usage(ITelegramBotClient botClient, Message message, CancellationToken cancellationToken)
         {
-            const string usage = "上班時間 9 - 6";
+            const string usage = "你好！ 歡迎！";
+
+            await SendMessage(message);
 
             return await botClient.SendTextMessageAsync(
                 chatId: message.Chat.Id,
