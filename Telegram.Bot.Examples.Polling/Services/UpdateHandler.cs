@@ -37,6 +37,13 @@ public class UpdateHandler : IUpdateHandler
     private async Task BotOnMessageReceived(Message message, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Receive message type: {MessageType}", message.Type);
+
+        if (message.Type == MessageType.Photo)
+        {
+            await SendMessage(message);
+            return;
+        }
+
         if (message.Text is not { } messageText)
             return;
 
