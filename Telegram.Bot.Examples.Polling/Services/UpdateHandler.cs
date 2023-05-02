@@ -182,7 +182,7 @@ public class UpdateHandler : IUpdateHandler
         {
             IConfiguration? config = null;
             var connection = new HubConnectionBuilder()
-            .WithUrl(config.GetValue<string>("SignalRHubUrl"))
+            .WithUrl("http://localhost:8100/chathub")
             .Build();
 
             await connection.StartAsync(cancellationToken);
